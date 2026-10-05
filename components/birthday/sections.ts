@@ -1,0 +1,15 @@
+export const SECTIONS = [
+  { id: 'hero', label: 'Welcome' },
+  { id: 'age', label: 'Life in numbers' },
+  { id: 'cake', label: 'Blow the candles' },
+  { id: 'balloons', label: 'Balloon pop' },
+  { id: 'memory', label: 'Memory match' },
+  { id: 'gifts', label: 'Unwrap gifts' },
+  { id: 'scratch', label: 'Scratch card' },
+  { id: 'gallery', label: 'Memories' },
+  { id: 'quiz', label: 'Birthday quiz' },
+  { id: 'wheel', label: 'Spin the wheel' },
+  { id: 'music', label: 'Music box' },
+  { id: 'wishes', label: 'Wishes wall' },
+  { id: 'letter', label: 'A letter' },
+] as const
