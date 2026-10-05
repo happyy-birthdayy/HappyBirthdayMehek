@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-float-up: float-up var(--float-duration, 14s) linear infinite;
+  --animate-bob: bob 4s ease-in-out infinite;
+  --animate-flicker: flicker 0.18s ease-in-out infinite alternate;
+  --animate-wiggle: wiggle 0.5s ease-in-out infinite;
+  --animate-rise: rise var(--rise-duration, 6s) linear forwards;
+  --animate-pop-burst: pop-burst 0.5s ease-out forwards;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-smoke: smoke 1.4s ease-out forwards;
+  --animate-twinkle: twinkle 2.4s ease-in-out infinite;
+  --animate-note-rise: note-rise 1.4s ease-out forwards;
+  --animate-spin-slow: spin 6s linear infinite;
+  --animate-heartbeat: heartbeat 1.6s ease-in-out infinite;
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+  @keyframes note-rise {
+    0% { transform: translateY(0) rotate(0) scale(0.6); opacity: 1; }
+    100% { transform: translateY(-140px) rotate(20deg) scale(1.2); opacity: 0; }
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(110vh) rotate(-6deg); }
+    50% { transform: translateY(40vh) rotate(6deg); }
+    100% { transform: translateY(-30vh) rotate(-6deg); }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-14px) rotate(2deg); }
+  }
+  @keyframes flicker {
+    0% { transform: scaleY(1) scaleX(1) rotate(-2deg); }
+    100% { transform: scaleY(1.12) scaleX(0.92) rotate(2deg); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+  }
+  @keyframes rise {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-1 * var(--rise-distance, 520px))); }
+  }
+  @keyframes pop-burst {
+    0% { transform: scale(0.4); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes smoke {
+    0% { transform: translateY(0) scale(0.6); opacity: 0.7; }
+    100% { transform: translateY(-40px) scale(1.6); opacity: 0; }
+  }
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.975 0.018 350);
+  --foreground: oklch(0.32 0.09 355);
+  --card: oklch(0.995 0.006 350);
+  --card-foreground: oklch(0.32 0.09 355);
+  --popover: oklch(0.995 0.006 350);
+  --popover-foreground: oklch(0.32 0.09 355);
+  --primary: oklch(0.64 0.2 360);
+  --primary-foreground: oklch(0.99 0.005 350);
+  --secondary: oklch(0.87 0.07 350);
+  --secondary-foreground: oklch(0.32 0.09 355);
+  --muted: oklch(0.945 0.03 350);
+  --muted-foreground: oklch(0.5 0.07 355);
+  --accent: oklch(0.88 0.07 25);
+  --accent-foreground: oklch(0.32 0.09 355);
+  --destructive: oklch(0.6 0.22 27);
+  --border: oklch(0.86 0.06 355);
+  --input: oklch(0.86 0.06 355);
+  --ring: oklch(0.64 0.2 360);
+  --ink: oklch(0.3 0.08 355);
+  --ink-foreground: oklch(0.97 0.02 350);
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@utility shadow-pop {
+  box-shadow: 0 8px 22px -10px oklch(0.64 0.2 360 / 0.45);
+}
+@utility shadow-pop-lg {
+  box-shadow: 0 24px 60px -18px oklch(0.64 0.2 360 / 0.45);
+}
+@utility bg-romance {
+  background-image:
+    radial-gradient(circle at 15% 20%, oklch(0.92 0.06 350 / 0.9), transparent 45%),
+    radial-gradient(circle at 85% 30%, oklch(0.93 0.05 20 / 0.8), transparent 40%),
+    radial-gradient(circle at 50% 90%, oklch(0.9 0.07 330 / 0.7), transparent 50%);
+}
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+@utility rotate-y-180 {
+  transform: rotateY(180deg);
+}
+@utility perspective {
+  perspective: 1000px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-float-up,
+  .animate-bob,
+  .animate-wiggle,
+  .animate-marquee {
+    animation: none !important;
+  }
+}
