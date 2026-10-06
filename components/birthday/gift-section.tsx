@@ -37,7 +37,7 @@ const GIFTS: GiftData[] = [
     ribbon: 'oklch(0.7 0.14 330)',
     icon: Heart,
     kicker: 'Promise',
-    title: 'Your favorite dinner, my treat',
+    title: 'Your favorite place, my treat',
     body: 'Pick the place, the dessert and the playlist. I will handle the rest.',
   },
 ]
