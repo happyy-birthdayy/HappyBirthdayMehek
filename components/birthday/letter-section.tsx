@@ -133,10 +133,6 @@ export function LetterSection() {
             <Rocket className="size-5" aria-hidden="true" />
             Grand finale fireworks
           </FunButton>
-          <FunButton variant="plain" onClick={share}>
-            <Link2 className="size-5" aria-hidden="true" />
-            {copied ? 'Link copied!' : 'Copy shareable link'}
-          </FunButton>
         </motion.div>
       </div>
     </SectionShell>
