@@ -10,11 +10,11 @@ import { fireworks, playSuccess, playTone } from '@/lib/effects'
 function letterText(name: string) {
   return `Dear ${name},
 
-Happy birthday! Another trip around the sun, and somehow you keep getting more wonderful. Thank you for every laugh, every late-night talk, and every moment you made ordinary days feel like a party.
+Happy birthday! Somehow you keep getting more wonderful. Thank you for every laugh, every late-night talk, every VN and every moment you made my ordinary days worth living.
 
 I hope this year brings you big adventures, quiet joys, and all the cake you can handle. Never stop being exactly you.
 
-With all my love,
+With all my honor,
 Your biggest fan`
 }
 
