@@ -9,34 +9,34 @@ import { cn } from '@/lib/utils'
 
 const QUESTIONS = [
   {
-    q: 'The "Happy Birthday" melody was originally a song called...',
-    options: ['Good Morning to All', 'Cheers for You', 'Oh What a Day', 'Sing Along Sally'],
+    q: 'If she could only eat one thing, what would it be?',
+    options: ['Pizza', 'Dhokla', 'Pasta', 'Momo'],
+    answer: 1,
+    fact: 'Dhokla is the ultimate favorite!',
+  },
+  {
+    q: 'Which of these animals does she love the most?',
+    options: ['Dogs', 'Rabbits', 'Cats', 'Birds'],
+    answer: 2,
+    fact: 'She is completely obsessed with cats!',
+  },
+  {
+    q: 'What is her absolute favorite drink?',
+    options: ['Coffee', 'Cold Drink', 'Chai', 'Juice'],
+    answer: 2,
+    fact: 'Nothing can beat a perfect cup of chai!',
+  },
+  {
+    q: 'Who does she love the most in the whole world?',
+    options: ['Mummy', 'Papa', 'Nani', 'Other'],
+    answer: 2,
+    fact: 'Nani has the most special place in her heart!',
+  },
+  {
+    q: 'What does she love collecting or keeping around?',
+    options: ['Soft toys', 'Makeup', 'Shoes', 'Books'],
     answer: 0,
-    fact: 'Written by sisters Patty and Mildred Hill in 1893 as a classroom greeting.',
-  },
-  {
-    q: 'How many people do you need in a room for a 50% chance two share a birthday?',
-    options: ['183', '57', '23', '100'],
-    answer: 2,
-    fact: 'It is the famous "birthday paradox" — just 23 people!',
-  },
-  {
-    q: 'Birthday cakes with candles are often traced back to which country\u2019s "Kinderfeste"?',
-    options: ['France', 'Germany', 'Japan', 'Brazil'],
-    answer: 1,
-    fact: 'German Kinderfeste in the 1700s featured cakes with candles — one for each year.',
-  },
-  {
-    q: 'In parts of Atlantic Canada, birthday kids get their nose greased with...',
-    options: ['Maple syrup', 'Butter', 'Frosting', 'Honey'],
-    answer: 1,
-    fact: 'Buttered noses make you too slippery for bad luck to catch you!',
-  },
-  {
-    q: 'Roughly how many people on Earth share any given birthday?',
-    options: ['About 2,000', 'About 200,000', 'About 21 million', 'About 1 billion'],
-    answer: 2,
-    fact: 'With 8+ billion people, about 21 million share your special day.',
+    fact: 'You can never have too many soft toys!',
   },
 ]
 
