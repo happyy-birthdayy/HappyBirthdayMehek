@@ -7,14 +7,14 @@ import { FunButton, SectionShell } from './section-shell'
 import { burst, playSuccess, playTone } from '@/lib/effects'
 
 const SEGMENTS = [
-  { label: 'Extra cake', full: 'Claim an extra-large slice of cake. No questions asked.', color: 'var(--primary)' },
-  { label: 'Dance break', full: 'Everyone stops for a 30-second dance party. Right now.', color: 'var(--accent)' },
-  { label: 'Choose music', full: 'You control the playlist for the rest of the night.', color: 'var(--secondary)' },
-  { label: 'Speech!', full: 'Time for a dramatic acceptance speech for being awesome.', color: 'oklch(0.82 0.09 330)' },
-  { label: 'Day off', full: 'Fortune says: one full lazy day, guilt-free.', color: 'var(--primary)' },
-  { label: 'Big hug', full: 'Collect a group hug from everyone nearby.', color: 'var(--accent)' },
-  { label: 'Adventure', full: 'A spontaneous adventure is coming your way this year.', color: 'var(--secondary)' },
-  { label: 'Wish x2', full: 'Lucky you — your birthday wish counts double this year.', color: 'oklch(0.82 0.09 330)' },
+  { label: 'Shopping Spree', full: 'I carry all your shopping bags for the day without complaining once.', color: 'var(--primary)' },
+  { label: 'Movie Time', full: 'You pick the movie, and I pay for the tickets and the popcorn.', color: 'var(--accent)' },
+  { label: 'WishX2', full: 'You just dubbled your wish luck, ask any wish you like', color: 'var(--secondary)' },
+  { label: 'Snack Delivery', full: 'One free midnight snack delivery right to your door when the cravings hit.', color: 'oklch(0.82 0.09 330)' },
+  { label: 'Paparazzi', full: 'I act as your personal photographer for a full Instagram or aesthetic photoshoot.', color: 'var(--primary)' },
+  { label: 'Skip a Chore', full: 'Hand over one annoying task or chore you hate doing, and I will handle it.', color: 'var(--accent)' },
+  { label: 'Dessert', full: 'A free dessert of your choice at your favorite cafe or bakery.', color: 'var(--secondary)' },
+  { label: 'Aux Cable VIP', full: 'You get absolute, unquestioned control of the music playlist for a whole week.', color: 'oklch(0.82 0.09 330)' },
 ]
 
 const SLICE = 360 / SEGMENTS.length
