@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Add this line
-  images: { unoptimized: true } // Required for images to work on GH Pages
+  output: 'export',
+  basePath: '/happyy-birthdayy',
+  images: { unoptimized: true }
 };
 export default nextConfig;
