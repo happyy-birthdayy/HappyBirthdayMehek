@@ -23,7 +23,7 @@ function format(n: number) {
 
 export function AgeCounterSection() {
   const name = useDisplayName()
-  const [birthDate, setBirthDate] = useState('2000-01-01')
+  const [birthDate, setBirthDate] = useState('2006-10-07')
   const [now, setNow] = useState<number | null>(null)
 
   useEffect(() => {
