@@ -1,55 +1,35 @@
 'use client'
 
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Heart, Music2, Pause, Play } from 'lucide-react'
-import { music, pauseMusic, playMusic, setMusicVolume } from '@/lib/music'
 import { sideCannons } from '@/lib/effects'
 import { cn } from '@/lib/utils'
 import { useDisplayName } from './birthday-context'
 
 const BAR_COUNT = 5
 
-function useMusic() {
-  return useSyncExternalStore(music.subscribe, music.getState, music.getServerState)
-}
-
 function Visualizer({ playing }: { playing: boolean }) {
-  const barsRef = useRef<(HTMLSpanElement | null)[]>([])
+  const [heights, setHeights] = useState([20, 20, 20, 20, 20])
 
   useEffect(() => {
     if (!playing) {
-      barsRef.current.forEach((b) => b && (b.style.transform = 'scaleY(0.2)'))
+      setHeights([20, 20, 20, 20, 20])
       return
     }
-    let raf = 0
-    const data = new Uint8Array(32)
-    const tick = () => {
-      const analyser = music.getAnalyser()
-      if (analyser) {
-        analyser.getByteFrequencyData(data)
-        barsRef.current.forEach((bar, i) => {
-          if (!bar) return
-          const v = data[2 + i * 3] / 255
-          bar.style.transform = `scaleY(${Math.max(0.15, v)})`
-        })
-      }
-      raf = requestAnimationFrame(tick)
-    }
-    tick()
-    return () => cancelAnimationFrame(raf)
+    const interval = setInterval(() => {
+      setHeights(Array.from({ length: BAR_COUNT }, () => Math.max(20, Math.random() * 100)))
+    }, 150)
+    return () => clearInterval(interval)
   }, [playing])
 
   return (
     <span aria-hidden="true" className="flex h-5 items-end gap-0.5">
-      {Array.from({ length: BAR_COUNT }).map((_, i) => (
+      {heights.map((h, i) => (
         <span
           key={i}
-          ref={(el) => {
-            barsRef.current[i] = el
-          }}
-          className="h-full w-1 origin-bottom rounded-full bg-primary transition-transform duration-100"
-          style={{ transform: 'scaleY(0.2)' }}
+          className="w-1 origin-bottom rounded-full bg-primary transition-all duration-150"
+          style={{ height: `${h}%` }}
         />
       ))}
     </span>
@@ -97,23 +77,48 @@ function WelcomeGate({ onOpen }: { onOpen: () => void }) {
 }
 
 export function MusicPlayer() {
-  const { playing, volume } = useMusic()
+  const [playing, setPlaying] = useState(false)
+  const [volume, setVolume] = useState(0.7)
   const [gateOpen, setGateOpen] = useState(true)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    let cancelled = false
-    playMusic().then((ok) => {
-      if (ok && !cancelled) setGateOpen(false)
-    })
+    // This loads your MP3 directly from the public folder on GitHub pages
+    audioRef.current = new Audio('/HappyBirthdayMehek/bestsong.mp3')
+    audioRef.current.loop = true
+    audioRef.current.volume = volume
+
     return () => {
-      cancelled = true
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
     }
   }, [])
 
+  const togglePlay = () => {
+    if (!audioRef.current) return
+    if (playing) {
+      audioRef.current.pause()
+      setPlaying(false)
+    } else {
+      audioRef.current.play().then(() => setPlaying(true)).catch(() => {})
+    }
+  }
+
   const openSurprise = () => {
-    void playMusic()
+    if (audioRef.current) {
+      audioRef.current.play().then(() => setPlaying(true)).catch(() => {})
+    }
     setGateOpen(false)
     sideCannons()
+  }
+
+  const handleVolumeChange = (v: number) => {
+    setVolume(v)
+    if (audioRef.current) {
+      audioRef.current.volume = v
+    }
   }
 
   return (
@@ -140,7 +145,7 @@ export function MusicPlayer() {
           <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
             {playing ? 'Now playing' : 'Paused'}
           </span>
-          <span className="truncate font-display text-sm font-semibold italic">Happy Birthday, music box</span>
+          <span className="truncate font-display text-sm font-semibold italic">Best Song Ever</span>
         </span>
         <Visualizer playing={playing} />
         <label className="hidden items-center sm:flex">
@@ -151,13 +156,13 @@ export function MusicPlayer() {
             max={1}
             step={0.05}
             value={volume}
-            onChange={(e) => setMusicVolume(Number(e.target.value))}
+            onChange={(e) => handleVolumeChange(Number(e.target.value))}
             className="h-1 w-20 cursor-pointer accent-[var(--primary)]"
           />
         </label>
         <button
           type="button"
-          onClick={() => (playing ? pauseMusic() : void playMusic())}
+          onClick={togglePlay}
           aria-label={playing ? 'Pause music' : 'Play music'}
           className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105 active:scale-95"
         >
