@@ -8,10 +8,10 @@ import { FunButton, SectionShell } from './section-shell'
 import { playClick } from '@/lib/effects'
 
 const PHOTOS = [
-  { src: '/HappyBirthdayMehek/images/memory-1.png', caption: 'You have beautiful eyes', rotate: -7},
-  { src: '/HappyBirthdayMehek/images/memory-2.png', caption: 'You are pretty', rotate: 5},
-  { src: '/HappyBirthdayMehek/images/memory-3.png', caption: 'You are sweet', rotate: -3},
-  { src: '/HappyBirthdayMehek/images/memory-4.png', caption: 'You are the best', rotate: 8}
+  { src: '/HappyBirthdayMehek/images/memory-1.png', caption: 'You have beautiful eyes', rotate: -7, alt: 'You Beautiful'},
+  { src: '/HappyBirthdayMehek/images/memory-2.png', caption: 'You are pretty', rotate: 5, alt: 'You Beautiful'},
+  { src: '/HappyBirthdayMehek/images/memory-3.png', caption: 'You are sweet', rotate: -3, alt: 'You Beautiful'},
+  { src: '/HappyBirthdayMehek/images/memory-4.png', caption: 'You are the best', rotate: 8, alt: 'You Beautiful'}
 ]
 
 export function GallerySection() {
